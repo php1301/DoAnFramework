@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Authors>Azure99</Authors>
+    <Company>Rainng</Company>
+    <Product>OpenJudger</Product>
+    <Copyright>Copyright © Azue99 Rainng</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Judger.Managers\Judger.Managers.csproj" />
+    <ProjectReference Include="..\Judger.Models\Judger.Models.csproj" />
+    <ProjectReference Include="..\Judger.Utils\Judger.Utils.csproj" />
+  </ItemGroup>
+
+</Project>

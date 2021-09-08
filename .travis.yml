@@ -1,0 +1,8 @@
+dist: focal
+language: csharp
+sudo: required
+mono: none
+dotnet: 5.0
+
+script:
+  - dotnet test src/
