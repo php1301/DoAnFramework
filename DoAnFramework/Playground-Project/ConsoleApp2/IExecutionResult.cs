@@ -4,8 +4,6 @@ using System.Text;
 
 namespace ConsoleApp2
 {
-    class IExecutionResult
-    {
         public interface IExecutionResult<TResult>
         where TResult : ISingleCodeRunResult, new()
         {
@@ -14,6 +12,5 @@ namespace ConsoleApp2
             string CompilerComment { get; set; }
 
             ICollection<TResult> Results { get; }
-        }
     }
 }

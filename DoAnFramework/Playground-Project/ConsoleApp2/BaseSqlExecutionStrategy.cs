@@ -24,6 +24,41 @@ namespace ConsoleApp2
 
         public virtual string GetDatabaseName() => Guid.NewGuid().ToString();
 
+        protected virtual IExecutionResult<TestResult> Execute(
+    IExecutionContext<TestsInputModel> executionContext,
+    IExecutionResult<TestResult> result,
+    Action<IDbConnection, TestContext> executionFlow)
+        {
+            result.IsCompiledSuccessfully = true;
+
+            string databaseName = null;
+            try
+            {
+                foreach (var test in executionContext.Input.Tests)
+                {
+                    databaseName = this.GetDatabaseName();
+
+                    using (var connection = this.GetOpenConnection(databaseName))
+                    {
+                        executionFlow(connection, test);
+                    }
+
+                    this.DropDatabase(databaseName);
+                }
+            }
+            catch (Exception ex)
+            {
+                if (!string.IsNullOrWhiteSpace(databaseName))
+                {
+                    this.DropDatabase(databaseName);
+                }
+
+                result.IsCompiledSuccessfully = false;
+                result.CompilerComment = ex.Message;
+            }
+
+            return result;
+        }
         public string ToHexString(byte[] bytes)
         {
             if (bytes == null)
@@ -144,7 +179,7 @@ namespace ConsoleApp2
             SqlResult sqlResult,
             IExecutionContext<TestsInputModel> executionContext,
             TestContext test,
-            IExecutionResult <TestResult> result)
+            IExecutionResult<TestResult> result)
         {
             if (sqlResult.Completed)
             {

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConsoleApp2
 {
-    class TestResult
+    public class TestResult: SingleCodeRunResult
     {
         public int Id { get; set; }
 

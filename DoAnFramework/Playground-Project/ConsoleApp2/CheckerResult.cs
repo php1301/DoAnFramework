@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConsoleApp2
 {
-    class CheckerResult
+    public class CheckerResult
     {
         public bool IsCorrect { get; set; }
 

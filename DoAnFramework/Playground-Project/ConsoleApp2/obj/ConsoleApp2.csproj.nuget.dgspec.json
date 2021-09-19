@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\anhbd\\Downloads\\DoAnFramework\\Playground-Project\\ConsoleApp2\\ConsoleApp2.csproj": {}
+    "D:\\PersonalPJ\\DoAnFramework\\DoAnFramework\\Playground-Project\\ConsoleApp2\\ConsoleApp2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\anhbd\\Downloads\\DoAnFramework\\Playground-Project\\ConsoleApp2\\ConsoleApp2.csproj": {
+    "D:\\PersonalPJ\\DoAnFramework\\DoAnFramework\\Playground-Project\\ConsoleApp2\\ConsoleApp2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\anhbd\\Downloads\\DoAnFramework\\Playground-Project\\ConsoleApp2\\ConsoleApp2.csproj",
+        "projectUniqueName": "D:\\PersonalPJ\\DoAnFramework\\DoAnFramework\\Playground-Project\\ConsoleApp2\\ConsoleApp2.csproj",
         "projectName": "ConsoleApp2",
-        "projectPath": "C:\\Users\\anhbd\\Downloads\\DoAnFramework\\Playground-Project\\ConsoleApp2\\ConsoleApp2.csproj",
-        "packagesPath": "C:\\Users\\anhbd\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\anhbd\\Downloads\\DoAnFramework\\Playground-Project\\ConsoleApp2\\obj\\",
+        "projectPath": "D:\\PersonalPJ\\DoAnFramework\\DoAnFramework\\Playground-Project\\ConsoleApp2\\ConsoleApp2.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "D:\\PersonalPJ\\DoAnFramework\\DoAnFramework\\Playground-Project\\ConsoleApp2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\anhbd\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,6 +40,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.26, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.2, )"

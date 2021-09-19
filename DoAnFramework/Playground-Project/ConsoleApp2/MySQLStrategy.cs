@@ -4,6 +4,7 @@ using System.Text;
 using System.Data;
 using System.Text.RegularExpressions;
 using System.Globalization;
+using global::MySql.Data.MySqlClient;
 //using MySql.Data.MySqlClient;
 
 namespace ConsoleApp2

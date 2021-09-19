@@ -8,7 +8,26 @@ namespace ConsoleApp2
     public class BaseInputModel
     {
         public byte[] TaskSkeleton { get; set; }
+        public static string Decompress(byte[] bytes)
+        {
+            if (bytes == null)
+            {
+                return null;
+            }
 
-        public string TaskSkeletonAsString => this.TaskSkeleton.Decompress();
+            using (var memoryStreamInput = new MemoryStream(bytes))
+            {
+                using (var memoryStreamOutput = new MemoryStream())
+                {
+                    using (var deflateStream = new DeflateStream(memoryStreamInput, CompressionMode.Decompress))
+                    {
+                        deflateStream.CopyTo(memoryStreamOutput);
+                    }
+
+                    return Encoding.UTF8.GetString(memoryStreamOutput.ToArray());
+                }
+            }
+        }
+        public string TaskSkeletonAsString => Decompress(this.TaskSkeleton);
     }
 }

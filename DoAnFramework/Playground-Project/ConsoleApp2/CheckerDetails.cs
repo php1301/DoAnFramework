@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConsoleApp2
 {
-    class CheckerDetails
+    public class CheckerDetails
     {
         public string Comment { get; set; }
 
