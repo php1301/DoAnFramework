@@ -32,6 +32,7 @@ namespace DoAnFramework
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                Console.WriteLine("Run dev");
             }
             else
             {

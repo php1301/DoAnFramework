@@ -7,7 +7,7 @@ using System.Globalization;
 
 namespace DoAnFramework
 {
-    public abstract class BaseSqlExecutionStrategy
+    public abstract class BaseSqlExecutionStrategy: BaseExecutionStrategy
     {
         protected static readonly Type DecimalType = typeof(decimal);
         protected static readonly Type DoubleType = typeof(double);
