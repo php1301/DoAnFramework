@@ -8,4 +8,3 @@ namespace DoAnFramework
         TestsExecution = 2,
     }
 }
-}
