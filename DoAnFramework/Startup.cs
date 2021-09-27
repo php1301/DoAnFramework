@@ -1,18 +1,30 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using System;
+using System.Data.Entity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Data.Entity;
+using System.Data.Common;
+
+using DoAnFramework.src.Configurations;
+using DoAnFramework.Migrations;
+
 
 namespace DoAnFramework
 {
     public class Startup
     {
+        public void TestConnection()
+        {
+            using (var db = new DoAnFramework.src.Models.DbContext())
+            {
+                string conn = db.Database.Connection.ConnectionString;
+                Console.WriteLine(conn);
+            }
+        }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,6 +41,13 @@ namespace DoAnFramework
             {
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "My API", Version = "v1" });
             });
+            services.AddScoped<DoAnFramework.src.Models.DbContext>(_ => new DoAnFramework.src.Models.DbContext(Configuration.GetConnectionString("Judger")));
+           
+
+           /*services.AddScoped<DoAnFramework.src.Models.DbContext>();*/
+           Database.SetInitializer(new MigrateDatabaseToLatestVersion<src.Models.DbContext, Configuration>());
+
+            EfBulkInsertGlimpseProviderRegistry.Execute();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,6 +56,7 @@ namespace DoAnFramework
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                TestConnection();
                 Console.WriteLine("Run dev");
             }
             else
@@ -50,7 +70,6 @@ namespace DoAnFramework
             app.UseStaticFiles();
 
             app.UseRouting();
-
             app.UseAuthorization();
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyProject.Api v1"));
