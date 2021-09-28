@@ -22,16 +22,17 @@ namespace DoAnFramework.Migrations
                 return;
             }
 
-            // this.SeedSubmissionsAndTestRuns(context);
+            this.SeedCheckers(context);
+            this.SeedSubmissionsAndTestRuns(context);
             this.SeedSubmissionTypes(context);
             this.SeedRoles(context);
-            this.SeedCheckers(context);
+/*
+            this.SeedContest(context);
 
-            // this.SeedContests(context);
-            // this.SeedRandomContests(context);
-            // this.SeedProblem(context);
-            // this.SeedTest(context);
-            // this.SeedCategoryContestProblem(context);
+            this.SeedRandomContests(context);
+            this.SeedProblem(context);
+            this.SeedTest(context);
+             this.SeedCategoryContestProblem(context);*/
         }
 
         //// TODO: Add seed with .Any()
@@ -340,6 +341,7 @@ namespace DoAnFramework.Migrations
             {
                 ProblemGroup = problemGroup,
                 Name = "Problem",
+                CheckerId = 1,
                 MaximumPoints = 100,
                 MemoryLimit = 100,
                 OrderBy = 1
@@ -385,6 +387,11 @@ namespace DoAnFramework.Migrations
             context.Contests.Add(new Contest
             {
                 Name = "Contest",
+                StartTime = DateTime.Now.AddDays(1),
+                EndTime = DateTime.Now.AddDays(2),
+                IsDeleted = false,
+                IsVisible = true,
+                OrderBy = 1
             });
 
             context.SaveChanges();
@@ -451,7 +458,7 @@ namespace DoAnFramework.Migrations
                 });
             }
 
-            var otherProblem = context.Problems.FirstOrDefault(x => x.Name == "Other problem" && !x.IsDeleted);
+          /*  var otherProblem = context.Problems.FirstOrDefault(x => x.Name == "Other problem" && !x.IsDeleted);
 
             otherProblem.Tests.Add(new DoAnFramework.src.Models.Test
             {
@@ -475,7 +482,7 @@ namespace DoAnFramework.Migrations
                     OutputDataAsString = (i + 1).ToString() + "other",
                     IsTrialTest = false
                 });
-            }
+            }*/
         }
 
         private void SeedRandomContests(DbContext context)

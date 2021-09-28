@@ -14,7 +14,7 @@ namespace DoAnFramework
         {
         }
 
-        protected  IExecutionResult<TestResult> ExecuteAgainstTestsInput(
+        protected override IExecutionResult<TestResult> ExecuteAgainstTestsInput(
             IExecutionContext<TestsInputModel> executionContext,
             IExecutionResult<TestResult> result)
             => this.Execute(

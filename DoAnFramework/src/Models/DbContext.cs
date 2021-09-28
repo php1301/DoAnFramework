@@ -15,9 +15,10 @@ namespace DoAnFramework.src.Models
 */    [DbConfigurationType(typeof(MySql.Data.EntityFramework.MySqlEFConfigu‌​ration))]
     public class DbContext: IdentityDbContext<UserProfile>, IDbContext
     {
-        public const string DefaultDbConnectionStringName = "Server=localhost; Database=judger; Uid=root; Pwd=pinodien;";
+        public const string LocaltDbConnectionStringName = "Server=localhost; Database=judger; Uid=root; Pwd=pinodien;";
+        public const string DefaultDbConnectionStringName = "Server=103.97.125.252; port=3306; Database=doanfram_v1; user id=doanfram; Pwd=2QdCOkBD7Nknf1c;";
         public DbContext()
-            : this(DefaultDbConnectionStringName)
+            : this(LocaltDbConnectionStringName)
         {
         }
 

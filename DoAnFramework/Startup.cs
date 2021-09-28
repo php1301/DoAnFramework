@@ -35,13 +35,13 @@ namespace DoAnFramework
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<DoAnFramework.src.Models.DbContext>(_ => new DoAnFramework.src.Models.DbContext(Configuration.GetConnectionString("Judger")));
             services.AddControllers();
             services.AddRazorPages();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "My API", Version = "v1" });
             });
-            services.AddScoped<DoAnFramework.src.Models.DbContext>(_ => new DoAnFramework.src.Models.DbContext(Configuration.GetConnectionString("Judger")));
            
 
            /*services.AddScoped<DoAnFramework.src.Models.DbContext>();*/
@@ -75,6 +75,7 @@ namespace DoAnFramework
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyProject.Api v1"));
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });
         }

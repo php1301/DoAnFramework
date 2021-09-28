@@ -7,13 +7,13 @@ namespace DoAnFramework.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class V3Migration : IMigrationMetadata
+    public sealed partial class V6_Migration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(V3Migration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(V6_Migration));
         
         string IMigrationMetadata.Id
         {
-            get { return "202109271600047_V3Migration"; }
+            get { return "202109281216240_V6_Migration"; }
         }
         
         string IMigrationMetadata.Source

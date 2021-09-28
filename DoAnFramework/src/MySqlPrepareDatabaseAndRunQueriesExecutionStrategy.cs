@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DoAnFramework
 {
-    public class MySqlPrepareDatabaseAndRunQueriesExecutionStrategy: MySQLStrategy
+    public class MySqlPrepareDatabaseAndRunQueriesExecutionStrategy : MySQLStrategy
     {
         public MySqlPrepareDatabaseAndRunQueriesExecutionStrategy(
             string sysDbConnectionString,
@@ -14,7 +14,7 @@ namespace DoAnFramework
         {
         }
 
-        protected IExecutionResult<TestResult> ExecuteAgainstTestsInput(
+        protected override IExecutionResult<TestResult> ExecuteAgainstTestsInput(
             IExecutionContext<TestsInputModel> executionContext,
             IExecutionResult<TestResult> result)
             => this.Execute(

@@ -163,7 +163,7 @@ namespace DoAnFramework.src.Models
                 return this.TestRuns.Count(x => x.ResultType != TestRunResultType.CorrectAnswer && !x.Test.IsTrialTest);
             }
         }
-
+/*
         [NotMapped]
         public int TestsWithoutTrialTestsCount
         {
@@ -171,7 +171,7 @@ namespace DoAnFramework.src.Models
             {
                 return this.Problem.Tests.Count(x => !x.IsTrialTest);
             }
-        }
+        }*/
 
         public void CacheTestRuns()
         {
